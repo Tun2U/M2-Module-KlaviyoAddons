@@ -1,0 +1,29 @@
+{
+    "name": "tun2u/module-klaviyoaddons",
+    "description": "Magento 2 Klaviyo Addons Module",
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "require": {
+        "php": ">=7.0.0",
+        "klaviyo/magento2-extension": ">=1,<3",
+        "magento/module-newsletter": "100.4.*"
+    },
+    "support": {
+        "email": "dev@tun2u.com"
+    },
+    "authors": [{
+        "name": "Tun2U S.r.l.",
+        "email": "dev@tun2u.com",
+        "homepage": "https://www.tun2u.com"
+    }],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tun2U\\KlaviyoAddons\\": ""
+        }
+    }
+}
