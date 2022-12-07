@@ -31,6 +31,7 @@ Install Tun2U KlaviyoAddons extensions for Magento 2
 
 ```
 composer require tun2u/m2-module-klaviyoaddons
+php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 php bin/magento setup:di:compile
 php bin/magento cache:flush
