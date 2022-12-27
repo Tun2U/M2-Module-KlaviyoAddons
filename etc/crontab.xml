@@ -9,9 +9,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
-	<group id="tun2u_klaviyoaddons_base">
-		<job name="tun2u_klaviyoaddons_unsubscribed_sync" instance="Tun2U\KlaviyoAddons\Cron\SyncUnsubscribedUsers" method="execute">
-			<schedule>0 4 * * *</schedule>
-		</job>
-	</group>
+    <group id="tun2u_klaviyoaddons_base">
+        <job name="tun2u_klaviyoaddons_unsubscribed_sync" instance="Tun2U\KlaviyoAddons\Cron\SyncUnsubscribedUsers" method="execute">
+            <config_path>crontab/default/jobs/tun2u_klaviyoaddons_unsubscribed_sync/schedule/cron_expr</config_path>
+        </job>
+    </group>
 </config>

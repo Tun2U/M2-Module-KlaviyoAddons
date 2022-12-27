@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <klaviyo_reclaim_general>
+            <klaviyo_addons>
+                <frequency>D</frequency>
+                <time>04,00,00</time>
+            </klaviyo_addons>
+        </klaviyo_reclaim_general>
+    </default>
+</config>

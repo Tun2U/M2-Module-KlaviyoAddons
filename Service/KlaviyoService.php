@@ -52,26 +52,36 @@ class KlaviyoService
      */
     public function syncUnsubscribedUsers()
     {
+        $urlPrams = [
+            'sort' => 'desc',
+            'count' => 500,
+            'page' => 0
+        ];
+
+        $this->doUnsubscribe($urlPrams);
+    }
+
+    private function doUnsubscribe(array $urlPrams)
+    {
         $params = [
             'headers' => [
                 'accept' => 'application/json'
             ]
         ];
-
-        $urlPrams = [
-            'sort' => 'desc',
-            'count' => 1000
-        ];
-
         // get unsubscribed users from klaviyo
         $response = $this->connector->call('v1/people/exclusions', $params, Request::HTTP_METHOD_GET, $urlPrams);
 
         try {
-            $unsubscribedUsers = $response->data;
-
-            foreach ($unsubscribedUsers as $user) {
-                $email = $user->email;
-                $this->subscriber->unsubscribeCustomerByEmail($email);
+            if (count($response->data) > 0) {
+                $unsubscribedUsers = $response->data;
+                foreach ($unsubscribedUsers as $user) {
+                    $email = $user->email;
+                    $this->subscriber->unsubscribeCustomerByEmail($email);
+                }
+                // get the next 500 unsubscribed users
+                $newUrlPrams = $urlPrams;
+                $newUrlPrams['page'] = $urlPrams['page'] + 1;
+                $this->doUnsubscribe($newUrlPrams);
             }
         } catch (\Exception $e) {
             $this->logger->critical($e->getMessage());
