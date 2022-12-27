@@ -13,7 +13,7 @@
 
 ##### Manual Installation
 
-Install Tun2U KlaviyoAddons extensions for Magento 2
+Install Tun2U KlaviyoAddons extension for Magento 2
 
 * Download the extension
 * Unzip the file
@@ -39,20 +39,6 @@ php bin/magento setup:di:compile
 php bin/magento cache:flush
 ```
 
-### Setup
-* From admin:
-* Go to stores > configuration
-* Find Klaviyo in sidebar
-* Open General
-* Open Klaviyo Add*ons
-* Set cron execution time
-
-## CLI commands:
-* to start synchronization of all unsubscribed users manually, use the command:
-```
-php bin/magento tun2u:klaviyoaddons --action sync_unsubscribed_users
-```
-
 ## Requirements
 
 * PHP >= 7.0.0
@@ -60,6 +46,20 @@ php bin/magento tun2u:klaviyoaddons --action sync_unsubscribed_users
 ## Compatibility
 
 * Magento >= 2.0
+
+### Setup
+* From admin:
+* Go to stores > configuration
+* Find Klaviyo in sidebar
+* Open General
+* Open Klaviyo Add-ons
+* Set cron execution time
+
+## CLI commands:
+* To start synchronization of all unsubscribed users manually, use the command:
+```
+php bin/magento tun2u:klaviyoaddons --action sync_unsubscribed_users
+```
 
 ## Support
 
