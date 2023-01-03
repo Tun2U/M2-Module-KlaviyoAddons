@@ -82,8 +82,10 @@ class Subscriber
             $customer->setStoreId($storeId);
             $customerId = $customer->getId();
             $this->subscriptionManager->unsubscribeCustomer((int)$customerId, $storeId);
-        
+            echo "user with email $email was unsubscribed correctly";
             return true;
+        } else {
+            echo "the user with email $email had already unsubscribed";
         }
 
         return false;

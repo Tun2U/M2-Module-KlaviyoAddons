@@ -32,6 +32,11 @@ class KlaviyoService
     private $subscriber;
 
     /**
+     * @var \Tun2U\KlaviyoAddons\Logger\Logger
+     */
+    private $logger;
+
+    /**
      * KlaviyoService constructor.
      *
      * @param \Tun2U\KlaviyoAddons\Model\Connector $connector,
@@ -39,10 +44,12 @@ class KlaviyoService
      */
     public function __construct(
         \Tun2U\KlaviyoAddons\Model\Connector $connector,
-        \Tun2U\KlaviyoAddons\Model\Subscriber $subscriber
+        \Tun2U\KlaviyoAddons\Model\Subscriber $subscriber,
+        \Tun2U\KlaviyoAddons\Logger\Logger $logger
     ) {
         $this->connector = $connector;
         $this->subscriber = $subscriber;
+        $this->logger = $logger;
     }
 
     /**
@@ -84,6 +91,7 @@ class KlaviyoService
                 $this->doUnsubscribe($newUrlPrams);
             }
         } catch (\Exception $e) {
+            echo $e->getMessage()."\n";
             $this->logger->critical($e->getMessage());
         }
     }
