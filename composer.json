@@ -2,7 +2,7 @@
     "name": "tun2u/m2-module-klaviyoaddons",
     "description": "Magento 2 Klaviyo Addons Module",
     "type": "magento2-module",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "minimum-stability": "stable",
     "license": "proprietary",
     "require": {
@@ -13,11 +13,13 @@
     "support": {
         "email": "dev@tun2u.com"
     },
-    "authors": [{
-        "name": "Tun2U S.r.l.",
-        "email": "dev@tun2u.com",
-        "homepage": "https://www.tun2u.com"
-    }],
+    "authors": [
+        {
+            "name": "Tun2U S.r.l.",
+            "email": "dev@tun2u.com",
+            "homepage": "https://www.tun2u.com"
+        }
+    ],
     "autoload": {
         "files": [
             "registration.php"

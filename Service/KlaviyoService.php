@@ -78,21 +78,22 @@ class KlaviyoService
         // get unsubscribed users from klaviyo
         $response = $this->connector->call('v1/people/exclusions', $params, Request::HTTP_METHOD_GET, $urlPrams);
 
-        try {
-            if (count($response->data) > 0) {
-                $unsubscribedUsers = $response->data;
-                foreach ($unsubscribedUsers as $user) {
+        if ($response && count($response->data) > 0) {
+            $unsubscribedUsers = $response->data;
+            foreach ($unsubscribedUsers as $user) {
+                try {
                     $email = $user->email;
                     $this->subscriber->unsubscribeCustomerByEmail($email);
+                } catch (\Exception $e) {
+                    echo $e->getMessage() . "\n";
+                    $this->logger->critical($e->getMessage());
+                    continue;
                 }
-                // get the next 500 unsubscribed users
-                $newUrlPrams = $urlPrams;
-                $newUrlPrams['page'] = $urlPrams['page'] + 1;
-                $this->doUnsubscribe($newUrlPrams);
             }
-        } catch (\Exception $e) {
-            echo $e->getMessage()."\n";
-            $this->logger->critical($e->getMessage());
+            // get the next 500 unsubscribed users
+            $newUrlPrams = $urlPrams;
+            $newUrlPrams['page'] = $urlPrams['page'] + 1;
+            $this->doUnsubscribe($newUrlPrams);
         }
     }
 }
